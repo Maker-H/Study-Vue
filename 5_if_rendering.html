@@ -8,12 +8,34 @@
 
 </head>
 <body>
+  <div id="if1">
+    <h1 v-if="awesome">Vue is awesome!</h1>
+    <h1 v-else>Oh no 😢</h1>
+  </div>
 
+  <div id="if2">
+    <template v-if="ok">
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </template>
+    <h1 v-else>Oh no 😢</h1>
+  </div>
   
+  <!-- v-else 엘리먼트는 v-if 엘리먼트 또는 v-else-if 엘리먼트 바로 뒤에 있어야 합니다. 그렇지 않으면 인식할 수 없습니다. -->
+  <div>
+    <div v-if="Math.random() > 0.5">
+      이제 나를 볼 수 있어요
+    </div>
+    <div v-else>
+      이제는 안보입니다
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
   <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
-  <script src="4_class+stylebind.js"></script>
+  <script src="5_if_rendering.js"></script>
 
 </body>
 
