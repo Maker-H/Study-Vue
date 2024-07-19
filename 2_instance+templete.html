@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+<body>
+
+  <div id="app">
+    <p>{{ foo }}</p>
+    <!-- obj.foo는 더이상 변하지 않습니다! -->
+    <button v-on:click="foo = 'baz'">Change it</button>
+  </div>  
+
+  <div id="example">
+    <p>{{a}}</p>
+  </div>
+
+  <div id="app2">
+    <span>메시지: {{ msg }}</span>
+    <span v-once>다시는 변경하지 않습니다: {{ msg }}</span>
+    <button v-on:click="reverseMessage">메시지 뒤집기</button>
+  </div>
+
+  <div id="app3">
+    <p>Using mustaches: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  </div>
+
+  <div id="app4">
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+  </div>
+
+  <div id="app5">
+    {{ number + 1 }}
+    {{ ok ? 'YES' : 'NO' }}
+    {{ message.split('').reverse().join('') }}
+    <div v-bind:id="'list-' + id"></div>
+  </div>
+
+  <div id="app6">
+    <p v-if="seen">이제 나를 볼 수 있어요</p>
+  </div>
+  
+  <div id="app7">
+    <a v-bind:href="url"> 구글로 이동 </a>
+    <a v-bind:[attributeName]="url"> 구글로 이동 </a>
+    <p></p>
+    <button v-on:click="doSomething"> alert 발생 </button>
+    <button v-[eventName]:click="doSomething"> alert 발생 </button>
+    
+    <!-- 컴파일러 경고를 불러옵니다 -->
+    <!-- <a v-bind:['foo' + bar]="value"> ... </a> -->
+
+    <p></p>
+
+    <!-- 전체 문법 -->
+    <a v-bind:href="url"> 구글로 이동 </a>
+    <!-- 약어 -->
+    <a :href="url"> 구글로 이동 </a>
+    <!-- shorthand with dynamic argument (2.6.0+) -->
+    <a :[key]="url"> 구글로 이동 </a>
+
+    <p></p>
+    <!-- 전체 문법 -->
+    <a v-on:click="doSomething">  alert 발생  </a>
+    <!-- 약어 -->
+    <a @click="doSomething">  alert 발생  </a>
+    <!-- shorthand with dynamic argument (2.6.0+) -->
+    <a @[event]="doSomething">  alert 발생  </a>
+  </div>
+
+  <script src="2_instance+templete.js"></script>
+</body>
+</html>

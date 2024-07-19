@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="4_class+stylebind.css">
+
+</head>
+<body>
+
+  <div id="class0" v-bind:class="{ active: isActive }"></div>
+  
+  <p></p>
+
+  <div 
+    id="class1"
+    v-bind:class="{ active: isActive, 'text-danger': hasError }"
+  ></div>
+  
+
+  <p></p>
+
+  <div id="class2" v-bind:class="classObject"></div>
+
+  <p></p>
+
+  <div id="class3" v-bind:class="classObject"></div>
+
+  <p></p>
+
+  <div id="class4" v-bind:class="[activeClass, errorClass]"></div>
+
+  <p></p>
+
+  <div id="class5" v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+
+  <p></p>
+
+  <div id="style1" v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">이렇게</div>
+
+  <div id="style2" v-bind:style="styleObject">좀더 쉽게</div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+  <script src="4_class+stylebind.js"></script>
+
+</body>
+
+</html>
