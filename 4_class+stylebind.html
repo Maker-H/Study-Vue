@@ -40,6 +40,12 @@
   <div id="style1" v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">이렇게</div>
 
   <div id="style2" v-bind:style="styleObject">좀더 쉽게</div>
+  
+  <div id="style3" v-bind:style="[baseStyles, overridingStyles]">배열적용</div>
+
+  <!-- 브라우저가 지원하는 배열의 마지막 값만 렌더링합니다. 이 예제에서는 flexbox의 접두어가 붙지않은 버전을 지원하는 브라우저에 대해 display : flex를 렌더링합니다. -->
+  <div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">플렉스 어쩌고</div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
   <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>

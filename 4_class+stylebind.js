@@ -91,3 +91,15 @@ let style2 = new Vue({
     }
   }
 });
+
+let style3 = new Vue({
+  el: '#style3',
+  data: {
+    baseStyles: {
+      color: 'gray'
+    },
+    overridingStyles: {
+      fontSize: '45px'
+    }
+  }
+});
