@@ -3,7 +3,8 @@
 // computed 속성 대신 메소드와 같은 함수를 정의할 수도 있습니다. 최종 결과에 대해 두 가지 접근 방식은 서로 동일합니다. 차이점은 computed 속성은 종속 대상을 따라 저장(캐싱)된다는 것
 // 즉 message가 변경되지 않는 한, computed 속성인 reversedMessage를 여러 번 요청해도 계산을 다시 하지 않고 계산되어 있던 결과를 즉시 반환합니다.
 // 이에 비해 메소드를 호출하면 렌더링을 다시 할 때마다 항상 함수를 실행
-var app1 = new Vue({
+
+new Vue({
   el: '#app1',
   data: {
     message: '안녕하세요'
@@ -15,7 +16,7 @@ var app1 = new Vue({
       return this.message.split('').reverse().join('')
     }
   }
-})
+});
 
 
 // Vue는 Vue 인스턴스의 데이터 변경을 관찰하고 이에 반응하는 보다 일반적인 watch 속성을 제공합니다.

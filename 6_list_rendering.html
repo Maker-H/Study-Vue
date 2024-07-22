@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="6_list_rendering.css">
+
+</head>
+<body>
+
+  <ul id="for1">
+    <li v-for="item in items">
+      {{ item.message }}
+    </li>
+  </ul>
+
+  <ul id="for2">
+    <li v-for="(item, index) in items">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+
+    <div v-for="item of items">{{ item }}</div>
+  </ul>
+
+  <ul id="for3" class="demo">
+    <li v-for="value in object">
+      {{ value }}
+    </li>
+
+    <div v-for="(value, name) in object">
+      {{ name }}: {{ value }}
+    </div>
+
+    <div v-for="(value, name, index) in object">
+      {{ index }}. {{ name }}: {{ value }}
+    </div>
+  </ul>
+
+  <ul id="for4">
+    <li v-for="item in items" :key="item.id">
+      {{ item.message }}
+    </li>
+  </ul>
+
+  <div id="method1">
+    <ul>
+      <li v-for="item in items" :key="item">{{ item }}</li>
+    </ul>
+    <button @click="addItem">Add Item</button>
+  </div>
+
+  <div id="method2">
+    <ul>
+        <li v-for="item in items" :key="item.id">{{ item.message }}</li>
+    </ul>
+    <button @click="filterItems">Filter Items</button>
+  </div>
+
+  <div id="method3">
+    <li v-for="n in evenNumbers" :key="n">{{ n }}</li>
+  </div>
+
+  <p></p>
+
+  <div id="method4">
+    <li v-for="n in even(numbers)">{{ n }}</li>
+  </div>
+
+  <p></p>
+
+  <div id="method5">
+    <span v-for="n in 10">{{ n }} </span>
+  </div>
+
+  <ul id="method6">
+    <template v-for="item in items">
+      <li>{{ item.msg }}</li>
+      <li class="divider" role="presentation"></li>
+    </template>
+  </ul>
+
+  <div id="method7">
+    <li v-for="todo in todos" v-if="!todo.isComplete">
+      {{ todo }}
+    </li>
+  </div>
+
+  <div id="method8">
+    <ul v-if="todos.length">
+      {{ todos.length }}
+      <li v-for="todo in todos">
+        {{ todo }}
+      </li>
+    </ul>
+    <p v-else>No todos left!</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+  <script src="6_list_rendering.js"></script>
+
+</body>
+
+</html>

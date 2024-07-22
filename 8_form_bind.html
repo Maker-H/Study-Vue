@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="6_list_rendering.css">
+
+</head>
+<body>
+
+  <div id="text1">
+    <input v-model="message" placeholder="여기를 수정해보세요">
+    <p>메시지: {{ message }}</p>
+  </div>
+
+  <p></p>
+
+  <div id="text2">
+    <span>여러 줄을 가지는 메시지:</span>
+    <p style="white-space: pre-line">{{ message }}</p>
+    <textarea v-model="message" placeholder="여러줄을 입력해보세요"></textarea>
+  </div>
+  
+
+  <div id="checkbox1">
+        <!-- Checkbox input with v-model binding -->
+        <input type="checkbox" id="checkbox_identify" v-model="checked">
+        <!-- Label displaying the checked state -->
+        <!-- for 속성은 레이블이 어떤 폼 컨트롤에 대한 것인지 식별하는 데 사용됩니다. 이 속성 값은 연결될 폼 컨트롤의 id 속성과 일치해야 합니다. -->
+        <label for="checkbox_identify">{{ content }}</label>
+  </div>
+
+  <div id="checkbox2">
+    <!-- value 속성은 체크박스가 선택되었을 때 Vue 데이터 속성(checkedNames 배열)에 저장될 값입니다. -->
+    <input type="checkbox" id="jack_identify" value="Jack_value" v-model="checkedNames">
+    <label for="jack_identify">Jack</label>
+    <input type="checkbox" id="john_identify" value="John_value" v-model="checkedNames">
+    <label for="john_identify">John</label>
+    <input type="checkbox" id="mike_identify" value="Mike_value" v-model="checkedNames">
+    <label for="mike_identify">Mike</label>
+    <br>
+    <span>체크한 이름: {{ checkedNames }}</span>
+  </div>
+
+  <div id="radio">
+    <input type="radio" id="one_identify" value="One_value" v-model="picked">
+    <label for="one_identify">One</label>
+    <br>
+    <input type="radio" id="two_identify" value="Two_value" v-model="picked">
+    <label for="two_identify">Two</label>
+    <br>
+    <span>선택: {{ picked }}</span>
+  </div>
+
+  <div id="select1">
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <p></p>
+    <span>선택함: {{ selected }}</span>
+  </div>
+
+  <p></p>
+
+  <div id="select2">
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <span>Selected: {{ selected }} </span>
+  </div>
+
+  <p></p>
+
+  <div id="select3">
+    <select v-model="selected">
+      <!-- inline object literal -->
+      <option v-bind:value="{ number: 123 }">123</option>
+    </select>
+    {{selected.number}}
+  </div>
+
+  <!--  [Ctrl]+클릭이나 드래깅 해야함;;;; -->
+  <div id="multi-select">
+    <select v-model="selected" multiple>
+      <option value="A">A 안되는데...</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <div id="input1">
+    <!-- `picked` 는 선택시 문자열 "a" 입니다 -->
+    <input type="radio" v-model="picked" value="this is radio" for="radio_val" id="radio_val">
+    <label for="radio_val">radio?</label>
+    <div>
+      radio: {{picked}}
+    </div>
+
+    <p></p>
+
+    <!-- `toggle` 는 true 또는 false 입니다 -->
+    <input
+      id="checkbox_identify1"
+      type="checkbox"
+      v-model="toggle"
+      true-value="yes"
+      false-value="no"
+      for="checkbox_identify1"
+    >
+    <label for="checkbox_identify1">select?</label>
+    <div>
+      toggle: {{ toggle }}
+    </div>
+
+    <p></p>
+
+    <!-- `selected`는 "ABC" 선택시 "abc" 입니다 -->
+    <select v-model="selected">
+      <option value="abc">ABC</option>
+    </select>
+    <div>selected: {{ selected }}</div>
+
+  </div>
+
+  <div id="lazy">
+    <input v-model.lazy="msg" >
+    <div>{{msg}}</div>
+  </div>
+
+  <div id="number">
+    <input v-model.number="age" type="number">
+    {{ age }}
+  </div>
+
+  <div id="trim">
+    <input v-model.trim="msg">
+    {{ msg }}:여기까지
+    <p></p>
+    <input v-model="msg_not_trim">
+    {{ msg_not_trim }}:여기까지
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+  <script src="8_form_bind.js"></script>
+
+</body>
+
+</html>

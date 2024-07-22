@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="6_list_rendering.css">
+
+</head>
+<body>
+
+  <div id="example">
+    <my-component1></my-component1>
+  </div>
+  
+  <div id="example2">
+    <my-component2></my-component2>
+  </div>
+
+  <!-- 
+    에러
+  <table>
+    <my-row>...</my-row>
+  </table>
+   -->
+
+  <div id="app">
+    <table>
+      <!-- :data="row": row 객체를 my-row 컴포넌트에 test라는 prop으로 전달합니다. -->
+      <tr is="my-row" v-for="row in rows" :key="row.id" :test="row"></tr>
+    </table>
+  </div>
+
+  <!-- <div id="app1">
+    <my-component3></my-component3>
+  </div> -->
+
+  <div id="counter1">
+    <simple-counter1></simple-counter1>
+    <simple-counter1></simple-counter1>
+    <simple-counter1></simple-counter1>
+  </div>
+
+  <div id="counter2">
+    <simple-counter2></simple-counter2>
+    <simple-counter2></simple-counter2>
+    <simple-counter2></simple-counter2>
+  </div>
+  
+
+  <div id="child1">
+    <child message="안녕하세요!"></child>
+  </div>
+
+  <div id="child2">
+    <!-- HTML는 kebab-case -->
+    <child2 my-message="안녕하세요!"></child2>
+  </div>
+
+  <div id="parent1">
+    <input v-model="parentMsg">
+    <br>
+    <child3 v-bind:my-message="parentMsg"></child3>
+  </div>
+
+  <div id="parent2">
+    <todo-item v-bind="todo"></todo-item>
+  </div>
+
+  <div id="prop1">
+    <comp some-prop="1"></comp>
+    <!-- 이것은 실제 숫자로 전달합니다. -->
+    <comp v-bind:some-prop="1"></comp>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+  <script src="9_component.js"></script>
+
+</body>
+
+</html>

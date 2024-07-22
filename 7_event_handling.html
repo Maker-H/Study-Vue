@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="6_list_rendering.css">
+
+</head>
+<body>
+
+  <div id="example-1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
+  </div>
+
+  <div id="example-2">
+    <!-- `greet`는 메소드 이름으로 아래에 정의되어 있습니다 -->
+    <button v-on:click="greet">Greet</button>
+  </div>
+
+  <div id="example-3">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+  </div>
+
+  <div id="example-4">
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+      Submit
+    </button>
+  </div>
+
+  <div id="example-5">
+    <!-- Call submit() only when the Enter key is pressed -->
+    <input v-on:keyup.enter="submit" placeholder="Press Enter to submit">
+
+    <!-- Call onPageDown() when the Page Down key is pressed -->
+    <input v-on:keyup.page-down="onPageDown" placeholder="Press Page Down">
+</div>
+
+<div id="example-6">
+  <!-- Call clear() when Alt + C is pressed -->
+  <input v-on:keyup.alt.67="clear" placeholder="Press Alt + C to clear">
+
+  <!-- Call doSomething() when Ctrl + Click is performed -->
+  <div v-on:click.ctrl="doSomething" style="margin-top: 20px; padding: 10px; border: 1px solid black;">
+      Do something (Ctrl + Click here)
+  </div>
+</div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+  <script src="7_event_handling.js"></script>
+
+</body>
+
+</html>
