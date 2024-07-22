@@ -140,7 +140,7 @@ new Vue({
 
 Vue.component('comp', {
     props: ['someProp'],
-    template: '<div>{{ someProp }} {{ typeof someProp }}</div>',
+    template: '<div> {{ someProp }} {{ typeof someProp }} </div>',
 })
 
 new Vue({
@@ -149,3 +149,88 @@ new Vue({
         someProp: 0
     }
 })
+
+Vue.component('counter', {
+    props: ['initialCounter'],
+    data: function () {
+      // prop을 초기 값으로 사용하여 로컬 데이터 속성을 설정합니다
+      return { counter: this.initialCounter }
+    },
+    template: `
+      <div>
+        <button v-on:click="counter += 1">{{ counter }}</button>
+      </div>
+    `
+})
+
+// Text-transform 컴포넌트 정의
+Vue.component('text-transform', {
+    props: ['text'],
+    computed: {
+        normalizedText: function () {
+        return this.text.trim().toLowerCase();
+        }
+    },
+    template: `
+        <div>{{ normalizedText }}</div>
+    `
+});
+
+new Vue({
+    el: '#component1',
+    data: {
+        message: '   MESSGAE   '  // 이 데이터가 하위 컴포넌트에 전달됩니다
+}
+});
+
+/**
+ * 
+type은 다음 네이티브 생성자 중 하나를 사용할 수 있습니다.
+
+String
+Number
+Boolean
+Function
+Object
+Array
+Symbol
+ */
+Vue.component('example', {
+    props: {
+      propA: Number,
+      propB: [String, Number],
+      propC: {
+        type: String,
+        required: true
+      },
+      propD: {
+        type: Number,
+        default: 100
+      },
+      propE: {
+        type: Object,
+        default: function () {
+          return { message: 'hello' }
+        }
+      },
+      propF: {
+        validator: function (value) {
+          return value > 10;
+        }
+      }
+    },
+    template: `
+      <div>
+        <p>propA: {{ propA }}</p>
+        <p>propB: {{ propB }}</p>
+        <p>propC: {{ propC }}</p>
+        <p>propD: {{ propD }}</p>
+        <p>propE: {{ propE.message }}</p>
+        <p>propF: {{ propF }}</p>
+      </div>
+    `
+  });
+
+  new Vue({
+    el: '#prop_type'
+  });
