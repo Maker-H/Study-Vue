@@ -4,17 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="6_list_rendering.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
 
+
+    <style>
+      header, footer {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 5px;
+      }
+    </style>
 </head>
 <body>
 
+  <div id="counter-event-example">
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+<!-- my-component 내부에서 클릭 이벤트가 발생하고, 이 이벤트를 외부에서 처리할 수 있도록 .native를 사용합니다. 그러니까, my-component 내부의 <button> 요소에서 발생한 클릭 이벤트가 루트 DOM 요소에서 감지되어 외부의 Vue 인스턴스에서 처리 -->
+  <!-- vue 인스턴스에서 처리하도록 도와주는게 .native -->
+  <div id="native">
+    <my-component v-on:click.native="doTheThing"></my-component>
+  </div>
+
+  <div id="vmodel">
+    <!-- foo는 my-component에서 prop의 이름입니다.
+bar는 부모 컴포넌트의 데이터 속성입니다. -->
+    <my-component v-model="bar"></my-component>
+    <button @click="changeBar">Change Bar</button>
+    <p>Bar value: {{ bar }}</p>
+  </div>
+
+  <div id="vmodel2">
+    <!-- 사용자 정의 컴포넌트 사용 -->
+    <custom-input v-model="something"></custom-input>
+    <p>Value: {{ something }}</p>
+  </div>
+
+  <div id="vmodel3">
+    <currency-input 
+    label="Price" 
+    v-model="price"
+  ></currency-input>
+  </div>
+
+  <div id="vmodel4">
+    <my-checkbox v-model="foo" value="some value"></my-checkbox>
+    <p>Selected Value: {{ foo }}</p>
+    <p>{{ message }}</p>
+  </div>
+
+  <div id="components">
+    <component-a></component-a>
+    <component-b></component-b>
+  </div>
+
+  <div id="multicomponent">
+    <!-- App 컴포넌트가 자식 컴포넌트들을 포함하는 구조 -->
+    <app>
+      <template v-slot:main>
+        <h1>Welcome to My App</h1>
+      </template>
+      <template v-slot:sidebar>
+        <p>Sidebar content</p>
+      </template>
+      <template v-slot:footer>
+        <p>Footer content here</p>
+      </template>
+    </app>
+  </div>
+
+  <!-- 상위 컴포넌트의 템플릿 -->
+  <div id="components2">
+    <parent-component></parent-component>
+  </div>
+
+  <div id="components3">
+    <div>
+      <h1>나는 부모 컴포넌트의 제목입니다</h1>
+      <my-component>
+        <p>이것은 원본 컨텐츠 입니다.</p>
+        <p>이것은 원본 중 추가 컨텐츠 입니다</p>
+      </my-component>
+    </div>
+    <hr>
+    <div>
+      <h1>나는 또 다른 부모 컴포넌트의 제목입니다</h1>
+      <my-component>
+        <!-- 부모 컴포넌트에서 자식 컴포넌트에 전달할 컨텐츠가 없습니다 -->
+      </my-component>
+    </div>
+  </div>
+
+  <div id="components4">
+    <app-layout>
+      <h1 slot="header">여기에 페이지 제목이 위치합니다</h1>
+      <p>메인 컨텐츠의 단락입니다.</p>
+      <p>하나 더 있습니다.</p>
+      <p slot="footer">여기에 연락처 정보입니다.</p>
+    </app-layout>
+  </div>
+
+  <div id="components5">
+    <parent-component></parent-component>
+  </div>
+
+
+
+
   <script src="9_component2.js"></script>
-
 </body>
 
 </html>
